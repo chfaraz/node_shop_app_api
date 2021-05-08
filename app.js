@@ -8,6 +8,8 @@ const Item = require('./models/Items');
 const app = express();
 
 const itemsRoute = require('./routs/items');
+const userRoute = require('./routs/users');
+const orderRoute = require('./routs/orders');
 
 //middleware::::::::::::::::
 
@@ -26,6 +28,8 @@ app.use(
 );
 
 app.use('/items', itemsRoute);
+app.use('/user', userRoute);
+app.use('/order', orderRoute);
 
 // getting all data from items
 app.get('/', (req, res) => {

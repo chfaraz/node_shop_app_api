@@ -1,6 +1,8 @@
 const express = require('express');
 const multer = require('multer');
 
+const auth = require('../middleWare/auth');
+
 // pre workout for storing files and images with multer
 
 const storage = multer.diskStorage({
@@ -35,7 +37,7 @@ const router = express.Router();
 
 // posting data to mongodb with mongoose
 
-router.post('/', upload.single('image'), (req, res) => {
+router.post('/', auth, upload.single('image'), (req, res) => {
     const item = new Item({
         title: req.body.title,
         description: req.body.description,

@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const UserSchema = mongoose.Schema({
+const OrderSchema = mongoose.Schema({
     name: {
         type: String,
         required: true,
@@ -9,14 +9,14 @@ const UserSchema = mongoose.Schema({
         type: String,
         required: true,
     },
-    password: {
-        type: String,
+    total: {
+        type: Number,
         required: true,
     },
-    type: {
-        type: String,
-        default: 'user',
+    quantity: {
+        type: Number,
+        required: true,
     },
 });
 
-module.exports = mongoose.model('Users', UserSchema);
+module.exports = mongoose.model('Orders', OrderSchema);
