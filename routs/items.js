@@ -6,11 +6,11 @@ const auth = require('../middleWare/auth');
 // pre workout for storing files and images with multer
 
 const storage = multer.diskStorage({
-    description: function (req, file, cb) {
+    destination: function (req, file, cb) {
         cb(null, './uploads/');
     },
     filename: function (req, file, cb) {
-        cb(null, new Date().toISOString + file.originalname);
+        cb(null,Date.now() + '-' + file.originalname );
     },
 });
 const fileFilter = (req, file, cb) => {
@@ -24,7 +24,7 @@ const fileFilter = (req, file, cb) => {
 const upload = multer({
     storage: storage,
     limits: {
-        fileSize: 1024 * 1024 * 3,
+        fileSize: 1024 * 1024 * 5,
     },
     fileFilter: fileFilter,
 });

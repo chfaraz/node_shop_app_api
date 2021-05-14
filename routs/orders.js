@@ -2,8 +2,10 @@ const express = require('express');
 
 const Order = require('../models/Order');
 const router = express.Router();
+const auth = require('../middleWare/auth');
 
-router.post('/checkout', (req, res, next) => {
+
+router.post('/checkout',auth, (req, res, next) => {
     const order = new Order({
         name: req.body.name,
         userName: req.body.userName,

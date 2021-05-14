@@ -36,7 +36,7 @@ router.post('/login', (req, res, next) => {
         }
         if (user[0].password === req.body.password) {
             var token = jwt.sign({ userName: user[0].userName, type: user[0].type }, process.env.JWT_KEY);
-            return res.status(200).json({ message: 'success', token: token });
+            return res.status(200).json({ message: 'success', token: token,name:user[0].name,userName: user[0].userName });
         } else {
             return res.status(500).json({ message: 'failed...' });
         }
